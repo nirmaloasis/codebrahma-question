@@ -11,6 +11,7 @@ class App extends Component {
     this.search = this.search.bind(this)
     this.clear = this.clear.bind(this)
     this.repoSearch = this.repoSearch.bind(this)
+    this.clearRepo = this.clearRepo.bind(this)
 
   }
   clear(){
@@ -41,7 +42,7 @@ class App extends Component {
      else{
     
     repoData.forEach(function(element,index) {
-      debugger
+      
       if(element.name.toUpperCase().includes(reponame)){
         
        var x = document.getElementById(index);
@@ -56,7 +57,10 @@ class App extends Component {
     });
   }
   }
-
+  clearRepo(){
+    this.refs.reponame.value=""
+    this.repoSearch();
+  }
   render() {
     var {repoData} = this.state;
     
@@ -70,6 +74,7 @@ class App extends Component {
         <br/>
         <br/>
         <input type="text" name="reponame" placeholder="reponame" ref = "reponame" onChange={this.repoSearch}/>
+        <button type="button" onClick={this.clearRepo}>Clear</button>
         </form>
 
         <br/>
